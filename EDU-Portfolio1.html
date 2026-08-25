@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yvonne Bunker | Student Portfolio</title>
+    <!-- Importing Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fff0f5; /* Soft lavender blush */
+            --text-main: #5a4b5e;
+            --accent-pink: #ffb6c1;
+            --accent-blue: #add8e6;
+            --accent-mint: #b0ebd4;
+            --accent-purple: #e6e6fa;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color), #ffe4e1);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header Styles --- */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background blobs for the header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -60px;
+            width: 250px;
+            height: 250px;
+            background: var(--accent-mint);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #d17887;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #7b9eb0;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .major-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--accent-purple);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #7a6b8c;
+            box-shadow: 0 4px 15px rgba(230, 230, 250, 0.8);
+        }
+
+        /* --- Section & Grid Styles --- */
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-align: center;
+            color: #d17887;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- Card Styles --- */
+        .card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 8px solid var(--accent-pink);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+        }
+
+        .card.sierra { border-top-color: var(--accent-blue); }
+        .card.wilm { border-top-color: var(--accent-mint); }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: #5a4b5e;
+            margin-top: 0;
+            border-bottom: 2px dashed #f0e6f2;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* --- Pill Tags for Classes --- */
+        .class-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .class-list li {
+            background: #fdf5f6;
+            border: 1px solid #fbe3e6;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #8c7691;
+            transition: all 0.2s;
+        }
+
+        .card.sierra .class-list li { background: #f0f8ff; border-color: #d6ebfa; color: #6b8c9c; }
+        .card.wilm .class-list li { background: #f0fff4; border-color: #d8f5df; color: #6b9c7e; }
+
+        .class-list li:hover {
+            background: var(--card-bg);
+            transform: scale(1.05);
+        }
+
+        /* --- My Work Placeholder --- */
+        .work-box {
+            background: var(--card-bg);
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 40px;
+            border: 4px dashed var(--accent-pink);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #d17887;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .work-box:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- Contact Links --- */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--card-bg);
+            color: #d17887;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 900;
+            border-radius: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-btn.github {
+            color: #7b9eb0;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-pink);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 182, 193, 0.5);
+        }
+
+        .contact-btn.github:hover {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 12px 25px rgba(173, 216, 230, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header Section -->
+        <header>
+            <h1>Yvonne Bunker</h1>
+            <div class="subtitle">Wilmington University</div>
+            <div class="major-info">
+                <span class="badge">Major: Cybersecurity</span>
+                <span class="badge">Concentration: Digital Forensics</span>
+            </div>
+        </header>
+
+        <!-- Classes IN PROGRESS -->
+        <div class="section">
+           <h2>Classes In Progress</h2>
+           <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-color: #fff0f5; /* Soft lavender blush */
+            --text-main: #5a4b5e;
+            --accent-pink: #ffb6c1;
+            --accent-blue: #add8e6;
+            --accent-mint: #b0ebd4;
+            --accent-purple: #e6e6fa;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color), #ffe4e1);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header Styles --- */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: var(--card-bg);
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            right: -60px;
+            width: 250px;
+            height: 250px;
+            background: var(--accent-mint);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #d17887;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .term-info {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #7b9eb0;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Section & Grid Styles --- */
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-align: center;
+            color: #d17887;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            margin-bottom: 50px;
+            overflow-x: auto;
+            border-top: 8px solid var(--accent-pink);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px dashed #f0e6f2;
+        }
+
+        th {
+            background-color: #fdf5f6;
+            color: #d17887;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        td {
+            font-weight: 700;
+            color: #5a4b5e;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Class Detail Cards --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 8px solid var(--accent-blue);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(173, 216, 230, 0.4);
+        }
+
+        .card:nth-child(2) { border-top-color: var(--accent-mint); }
+        .card:nth-child(3) { border-top-color: var(--accent-purple); }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: #5a4b5e;
+            margin-top: 0;
+            border-bottom: 2px dashed #f0e6f2;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #7a6b8c;
+            font-weight: 600;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Classes Table Section -->
+        <div class="section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Part Of Term</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Introduction to Linux (SEC 230)</td>
+                            <td>Block 1</td>
+                        </tr>
+                        <tr>
+                            <td>Pre-Calculus (MAT 200)</td>
+                            <td>Full Term</td>
+                        </tr>
+                        <tr>
+                            <td>Intro to Programming with Python (SEC 290)</td>
+                            <td>Block 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Detailed Explanations Section -->
+        <div class="section">
+            <h2>Class Overviews</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>SEC 230: Introduction to Linux</h3>
+                    <p>Most of the internet and the vast majority of security tools run on Linux. Learning this operating system will give the foundational command line skills needed to navigate servers, analyze system logs, and understand how environments operate internally.</p>
+                </div>
+
+                <div class="card">
+                    <h3>MAT 200: Pre-Calculus</h3>
+                    <p>Security is fundamentally about logic and problem solving. This math course will strengthen analytical thinking and pattern recognition, which are essential mental tools when you start breaking down complex algorithms or tackling advanced cryptography concepts later on.</p>
+                </div>
+
+                <div class="card">
+                    <h3>SEC 290: Intro to Programming with Python</h3>
+                    <p>Automation is important in almost all aspects of technology, including modern defense. In cybersecurity, Python is used to write quick scripts that automate repetitive tasks and analyze massive amounts of security data in seconds. Automation and proper incident detection is a vital aspect of cybersecurity.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+            <h2>Classes Completed</h2>
+            
+            <div class="grid">
+                
+                <!-- SLCC Transfer Credit -->
+                <div class="card slcc">
+                    <h3>Salt Lake Community College<br><small>(Transfer Credit)</small></h3>
+                    <ul class="class-list">
+                        <li>ELE 100: ELE 100 Level Elective</li>
+                        <li>ENG 122: English Composition II</li>
+                        <li>ENG 131: Public Speaking</li>
+                        <li>HUM 170: HUM 100 Level Elective</li>
+                        <li>POL 300: American Politics</li>
+                        <li>SEC 101: SEC 100 Level Elective</li>
+                        <li>SEC 290: Intro to Programming with Python</li>
+                    </ul>
+                </div>
+
+                <!-- Sierra College Transfer Credit -->
+                <div class="card sierra">
+                    <h3>Sierra College<br><small>(Transfer Credit)</small></h3>
+                    <ul class="class-list">
+                        <li>ENG 121: English Composition I</li>
+                    </ul>
+                </div>
+
+                <!-- Wilmington University -->
+                <div class="card wilm">
+                    <h3>Wilmington University<br><small>(Current)</small></h3>
+                    <ul class="class-list">
+                        <li>CSC 100: Web Design and Development</li>
+                        <li>CSC 326: Excel in Bus Prob Solving</li>
+                        <li>CSC 200: Computer Science Fund</li>
+                        <li>HUM 360: Hum World View 3500BCE-1650CE</li>
+                        <li>PHI 100: Intro to Critical Thinking</li>
+                        <li>ACS 150: Academic Skill Building</li>
+                        <li>ECO 105: Fundamentals of Economics</li>
+                        <li>PHI 314: Ethics for Computer Profs</li>
+                        <li>PSY 101: Intro to Psychology</li>
+                        <li>SEC 100: Computer Hardware and Operation</li>
+                        <li>ART 301: Drawing and Painting</li>
+                        <li>ENG 310: Research Writing</li>
+                        <li>SEC 210: Prin and Prac of Info Security</li>
+                        <li>ENV 303: Climate Dynamics</li>
+                        <li>MAT 110: Math Essentials</li>
+                        <li>MAT 205: Intro Survey of Mathematics</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- My Work Section -->
+        <div class="section">
+            <h2>My Work</h2>
+            <div class="work-box">
+                Coming Soon...
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section">
+            <h2>Let's Connect</h2>
+            <div class="contact-links">
+                <a href="mailto:ynelsonbunker001@my.wilmu.edu" class="contact-btn">Email Me</a>
+                <a href="https://github.com/yvonnebunker" target="_blank" class="contact-btn github">View GitHub</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
